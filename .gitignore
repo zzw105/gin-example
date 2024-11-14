@@ -1,0 +1,35 @@
+# Go binary output
+/bin/
+/obj/
+
+# Go workspace directories
+/.vscode/
+/.idea/
+
+# Go dependencies
+/vendor/
+
+# Go test binary
+/testdata/
+
+# IDE and editor directories
+/.vscode/
+/.idea/
+/*.sublime-workspace
+/*.sublime-project
+
+# MacOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+Desktop.ini
+
+# Go project file
+# go.sum
+# go.mod
+tmp
+# Temporary files created by the Go runtime
+*.log
+*.out
+*.pid
