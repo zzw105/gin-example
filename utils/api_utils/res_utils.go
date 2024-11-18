@@ -1,8 +1,10 @@
 package api_utils
 
 import (
+	"fmt"
 	"gin-example/types"
 	"net/http"
+	"reflect"
 
 	"github.com/gin-gonic/gin"
 )
@@ -12,15 +14,16 @@ func SuccessResponse(c *gin.Context, data interface{}, options ...*types.Options
 	// 默认值
 	resp := types.BaseResponse{
 		Code:    200, // 默认 code 200
-		Data:    data,
+		Data:    normalizeData(data),
 		Message: "Success", // 默认 message "Success"
 	}
+	fmt.Println(data) // log:[]
 
 	if len(options) > 0 {
 		resp.Code = options[0].Code
 		resp.Message = options[0].Message
 	}
-
+	fmt.Println(data)
 	c.JSON(http.StatusOK, resp)
 
 	return http.StatusOK, resp
@@ -33,4 +36,13 @@ func ErrorResponse(c *gin.Context, code int, message string) {
 		Data:    nil,
 		Message: message,
 	})
+}
+
+func normalizeData(data interface{}) interface{} {
+	v := reflect.ValueOf(data)
+	// 判断是否是切片且为 nil
+	if v.Kind() == reflect.Slice && v.IsNil() {
+		return reflect.MakeSlice(v.Type(), 0, 0).Interface()
+	}
+	return data
 }

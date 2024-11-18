@@ -11,6 +11,7 @@ func SetupRouter() *gin.Engine {
 	// 路由设置
 	// r.GET("/user", handler.GetUsers)
 	r = UserRouter(r)
+	WorkCalendarRouter(r)
 
 	// 可以在这里添加更多路由
 	// r.POST("/users", handler.CreateUser)

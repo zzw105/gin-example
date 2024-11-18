@@ -43,7 +43,7 @@ func main() {
 	// 设置信任的代理 IP 地址（例如信任本地或特定 IP 地址）
 	err1 := r.SetTrustedProxies([]string{"127.0.0.1", "192.168.1.0/24"})
 	if err1 != nil {
-		log.Fatalf("Error setting trusted proxies: %v", err1)
+		log.Fatalf("Error setting trusted proxies1: %v", err1)
 	}
 
 	router.SetupRouter().Run(":8080")

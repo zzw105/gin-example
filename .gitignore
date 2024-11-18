@@ -33,3 +33,5 @@ tmp
 *.log
 *.out
 *.pid
+
+out
